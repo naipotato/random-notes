@@ -1,0 +1,21 @@
+.note-row {
+  padding: 12px 4px;
+}
+
+noteview {
+  background-color: @view_bg_color;
+}
+
+.note-title {
+  padding: 16px 12px 8px;
+  font-size: 20pt;
+  font-weight: 900;
+}
+
+.note-title + separator {
+  margin: 0 12px;
+}
+
+.note-content {
+  padding: 12px;
+}

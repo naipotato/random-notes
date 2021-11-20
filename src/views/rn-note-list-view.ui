@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+<template class="RnNoteListView" parent="RnView">
+
+  <child type="titlebar">
+    <object class="AdwHeaderBar">
+      <property name="show-end-title-buttons">no</property>
+
+      <child type="end">
+        <object class="GtkButton">
+          <property name="icon-name">rn-add-note-symbolic</property>
+          <signal name="clicked" handler="on_add_button_clicked" />
+        </object>
+      </child>
+
+    </object>
+  </child>
+
+  <child>
+    <object class="GtkScrolledWindow">
+      <property name="hscrollbar-policy">never</property>
+
+      <child>
+        <object class="GtkListView">
+
+          <property name="model">
+            <object class="GtkSingleSelection" id="selection_model">
+              <property name="autoselect">no</property>
+              <property name="can-unselect">yes</property>
+
+              <property name="model">
+                <object class="GtkSortListModel">
+
+                  <binding name="model">
+                    <lookup name="notes">RnNoteListView</lookup>
+                  </binding>
+
+                  <property name="sorter">
+                    <object class="RnNoteSorter" />
+                  </property>
+
+                </object>
+              </property>
+
+            </object>
+          </property>
+
+          <property name="factory">
+            <object class="GtkBuilderListItemFactory">
+              <property name="resource">/ar/com/nahuelgomez/RandomNotes/rn-note-row.ui</property>
+            </object>
+          </property>
+
+          <style>
+            <class name="navigation-sidebar" />
+          </style>
+
+        </object>
+      </child>
+
+    </object>
+  </child>
+
+</template>
+
+</interface>

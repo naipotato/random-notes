@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+
+<gresource prefix="/ar/com/nahuelgomez/RandomNotes/icons">
+  <file>scalable/actions/rn-add-note-symbolic.svg</file>
+  <file>scalable/actions/rn-delete-note-symbolic.svg</file>
+</gresource>
+
+</gresources>
