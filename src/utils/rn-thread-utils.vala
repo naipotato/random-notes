@@ -26,7 +26,7 @@ namespace Rn.ThreadUtils {
   unowned ThreadPool<Worker> _get_thread_pool () {
     return _once.once (() => {
       return new ThreadPool<Worker>.with_owned_data (
-          worker => worker.run (), (int) get_num_processors (), false);
+          worker => worker.run (), 1, false);
     });
   }
 
