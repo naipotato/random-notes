@@ -56,9 +56,7 @@
                   <property name="wrap-mode">word-char</property>
 
                   <property name="buffer">
-                    <object class="GtkTextBuffer" id="note_title">
-                      <signal name="notify::text" handler="on_text_updated" />
-                    </object>
+                    <object class="GtkTextBuffer" id="note_title" />
                   </property>
 
                   <style>
@@ -78,9 +76,7 @@
                   <property name="wrap-mode">word-char</property>
 
                   <property name="buffer">
-                    <object class="GtkTextBuffer" id="note_content">
-                      <signal name="notify::text" handler="on_text_updated" />
-                    </object>
+                    <object class="GtkTextBuffer" id="note_content" />
                   </property>
 
                   <style>

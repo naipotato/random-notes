@@ -38,6 +38,9 @@ sealed class Rn.NoteView : View {
       title_binding?.unbind ();
       content_binding?.unbind ();
 
+      if (_note != null)
+        _note.notify.disconnect (on_text_updated);
+
       _note = value;
 
       stack.visible_child = _note != null ? (Gtk.Widget) note_view : empty_view;
@@ -47,6 +50,9 @@ sealed class Rn.NoteView : View {
           "title", note_title, "text", SYNC_CREATE|BIDIRECTIONAL);
       content_binding = _note?.bind_property (
           "content", note_content, "text", SYNC_CREATE|BIDIRECTIONAL);
+
+      if (_note != null)
+        _note.notify.connect (on_text_updated);
     }
   }
 
@@ -62,7 +68,6 @@ sealed class Rn.NoteView : View {
     note_removal_requested (note);
   }
 
-  [GtkCallback]
   void on_text_updated () {
     note_update_requested (note);
   }
