@@ -1,10 +1,10 @@
 /*
- * Copyright 2021 https://nahuelgomez.com.ar
+ * Copyright 2021 https://nahuelwexd.com
  *
  * SPDX-License-Identifier: MIT
  */
 
-[GtkTemplate (ui = "/ar/com/nahuelgomez/RandomNotes/rn-note-list-view.ui")]
+[GtkTemplate (ui = "/com/nahuelwexd/RandomNotes/ui/rn-note-list-view.ui")]
 sealed class Rn.NoteListView : View {
   [GtkChild]
   unowned Gtk.SingleSelection selection_model;

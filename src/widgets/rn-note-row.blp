@@ -1,0 +1,28 @@
+using Gtk 4.0;
+
+template ListItem {
+  child: Box {
+    orientation: vertical;
+    valign: center;
+
+    styles ["note-row"]
+
+    Label {
+      label: bind template.item as <$RnNote>.title;
+      halign: start;
+      ellipsize: end;
+      single-line-mode: true;
+
+      styles ["heading"]
+    }
+
+    Label {
+      label: bind template.item as <$RnNote>.content;
+      halign: start;
+      ellipsize: end;
+      single-line-mode: true;
+
+      styles ["caption"]
+    }
+  };
+}

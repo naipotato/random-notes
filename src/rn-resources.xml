@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+
+<gresource prefix="/com/nahuelwexd/RandomNotes">
+  <file>style.css</file>
+</gresource>
+
+<gresource prefix="/com/nahuelwexd/RandomNotes/icons">
+  <file alias="scalable/actions/rn-add-note-symbolic.svg">views/rn-add-note-symbolic.svg</file>
+  <file alias="scalable/actions/rn-delete-note-symbolic.svg">views/rn-delete-note-symbolic.svg</file>
+</gresource>
+
+<gresource prefix="/com/nahuelwexd/RandomNotes/ui">
+  <file alias="rn-note-list-view.ui">views/rn-note-list-view.ui</file>
+  <file alias="rn-note-view.ui">views/rn-note-view.ui</file>
+  <file alias="rn-note-row.ui">widgets/rn-note-row.ui</file>
+  <file alias="rn-app-window.ui">windows/rn-app-window.ui</file>
+</gresource>
+
+</gresources>

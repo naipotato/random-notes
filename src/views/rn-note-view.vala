@@ -1,10 +1,10 @@
 /*
- * Copyright 2021 Nahuel Gomez https://nahuelgomez.com.ar
+ * Copyright 2021 Nahuel Gomez https://nahuelwexd.com
  *
  * SPDX-License-Identifier: MIT
  */
 
-[GtkTemplate (ui = "/ar/com/nahuelgomez/RandomNotes/rn-note-view.ui")]
+[GtkTemplate (ui = "/com/nahuelwexd/RandomNotes/ui/rn-note-view.ui")]
 sealed class Rn.NoteView : View {
   Note? _note;
 

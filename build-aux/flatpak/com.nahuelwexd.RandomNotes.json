@@ -1,0 +1,46 @@
+{
+  "id" : "com.nahuelwexd.RandomNotes",
+  "command" : "random-notes",
+
+  "runtime" : "org.gnome.Platform",
+  "runtime-version" : "44",
+  "sdk" : "org.gnome.Sdk",
+
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.vala"],
+  "build-options": {
+    "prepend-path": "/usr/lib/sdk/vala/bin",
+    "prepend-ld-library-path": "/usr/lib/sdk/vala/lib"
+  },
+
+  "finish-args" : [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri"
+  ],
+
+  "modules" : [
+    {
+      "name": "blueprint-compiler",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
+          "tag": "v0.8.1"
+        }
+      ]
+    },
+    {
+      "name" : "random-notes",
+      "buildsystem" : "meson",
+      "sources" : [
+        {
+          "type" : "dir",
+          "path" : "../.."
+        }
+      ]
+    }
+  ]
+}

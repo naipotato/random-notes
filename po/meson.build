@@ -1,4 +1,1 @@
-i18n.gettext(
-  'random-notes',
-  preset: 'glib',
-)
+i18n.gettext('random-notes', preset : 'glib')

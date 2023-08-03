@@ -1,0 +1,57 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RnNoteView : $RnView {
+  [titlebar]
+  Adw.HeaderBar {
+    show-start-title-buttons: false;
+
+    [title]
+    Adw.Bin {}
+
+    [end]
+    Button delete_button {
+      visible: false;
+      clicked => $on_delete_button_clicked();
+
+      styles ["destructive-action"]
+
+      Adw.ButtonContent {
+        icon-name: "rn-delete-note-symbolic";
+        label: "Remove";
+      }
+    }
+  }
+
+  Stack stack {
+    Adw.StatusPage empty_view {
+      icon-name: "com.nahuelwexd.RandomNotes-symbolic";
+      title: "Select a note";
+    }
+
+    ScrolledWindow note_view {
+      hscrollbar-policy: never;
+
+      Box {
+        orientation: vertical;
+
+        TextView {
+          wrap-mode: word_char;
+          buffer: TextBuffer note_title {};
+
+          styles ["note-title"]
+        }
+
+        Separator {}
+
+        TextView {
+          vexpand: true;
+          wrap-mode: word_char;
+          buffer: TextBuffer note_content {};
+
+          styles ["note-content"]
+        }
+      }
+    }
+  }
+}

@@ -1,44 +1,56 @@
-random_notes_sources = [
-  'models/rn-note.vala',
+rn_sources = files('random-notes.vala', 'rn-app.vala')
+rn_blueprints = files()
 
-  'repositories/rn-note-repository.vala',
+subdir('models')
+subdir('repositories')
+subdir('utils')
+subdir('view-models')
+subdir('views')
+subdir('widgets')
+subdir('windows')
 
-  'utils/rn-file-utils.vala',
-  'utils/rn-note-sorter.vala',
-  'utils/rn-observable-list.vala',
-  'utils/rn-thread-utils.vala',
+blueprint_compiler = find_program('blueprint-compiler')
 
-  'view-models/rn-note-view-model.vala',
+rn_resources = gnome.compile_resources(
+  'rn-resources',
+  'rn-resources.xml',
 
-  'views/rn-note-list-view.vala',
-  'views/rn-note-view.vala',
-  'views/rn-view.vala',
-
-  'windows/rn-app-window.vala',
-
-  'random-notes.vala',
-  'rn-app.vala',
-]
-
-random_notes_deps = [
-  dependency('gio-2.0', version: '>=2.70'),
-  dependency('gtk4', version: '>=4.4'),
-  dependency('libadwaita-1', version: '>=1.0'),
-  dependency('json-glib-1.0', version: '>=1.0'),
-]
-
-gnome = import('gnome')
-
-random_notes_sources += gnome.compile_resources(
-  'ui-resources',
-  'ui-resources.xml',
+  c_name       : 'random_notes',
+  dependencies : custom_target(
+    build_always_stale : true,
+    command            : [
+      blueprint_compiler,
+      'batch-compile',
+      '@OUTPUT@',
+      '@CURRENT_SOURCE_DIR@',
+      '@INPUT@',
+    ],
+    input              : rn_blueprints,
+    output             : '.',
+  ),
 )
 
-random_notes_sources += icon_resources
+rn_deps = [
+  dependency('gio-2.0',       version : '>=2.70', method : 'pkg-config'),
+  dependency('gtk4',          version : '>=4.4',  method : 'pkg-config'),
+  dependency('libadwaita-1',  version : '>=1.0',  method : 'pkg-config'),
+  dependency('json-glib-1.0', version : '>=1.0',  method : 'pkg-config'),
+]
 
 executable(
   meson.project_name(),
-  random_notes_sources,
-  dependencies: random_notes_deps,
-  install: true,
+  rn_resources, rn_sources,
+
+  c_args        : [
+    '-DG_LOG_DOMAIN="RandomNotes"',
+    f'-DGETTEXT_PACKAGE="random-notes"',
+  ],
+  dependencies  : rn_deps,
+  install       : true,
+  vala_args     : [
+    '--enable-checking',
+    '--gresourcesdir=src/',
+    '--nostdpkg',
+  ],
+  win_subsystem : 'windows',
 )

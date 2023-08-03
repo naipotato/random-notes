@@ -1,0 +1,24 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RnAppWindow : Adw.ApplicationWindow {
+  title: "Random Notes";
+  default-width: 800;
+  default-height: 600;
+
+  Box {
+    $RnNoteListView note_list_view {
+      new-note-requested => $on_new_note_requested();
+      notes: bind template.view-model as <$RnNoteViewModel>.notes;
+    }
+
+    Separator {}
+
+    $RnNoteView {
+      hexpand: true;
+      note: bind note_list_view.selected-note;
+      note-update-requested => $on_note_update_requested();
+      note-removal-requested => $on_note_removal_requested();
+    }
+  }
+}

@@ -1,10 +1,10 @@
 /*
- * Copyright 2021 https://nahuelgomez.com.ar
+ * Copyright 2021 https://nahuelwexd.com
  *
  * SPDX-License-Identifier: MIT
  */
 
-[GtkTemplate (ui = "/ar/com/nahuelgomez/RandomNotes/rn-app-window.ui")]
+[GtkTemplate (ui = "/com/nahuelwexd/RandomNotes/ui/rn-app-window.ui")]
 sealed class Rn.AppWindow : Adw.ApplicationWindow {
   public NoteViewModel view_model { get; construct; }
 
